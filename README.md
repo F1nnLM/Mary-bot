@@ -1,2 +1,3 @@
 # Mary-bot
-Discord bot
+this bot is currently under development
+
