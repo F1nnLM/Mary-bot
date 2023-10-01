@@ -24,7 +24,7 @@ async def eightball(ctx, *, question):
 @client.command()
 async def mirror(ctx, *, text):
     user = ctx.author
-    await ctx.send(f"{text} - send by {user}")
+    await ctx.send(f"{text} - sent by {user}")
         
 
 client.run(creds.token)
