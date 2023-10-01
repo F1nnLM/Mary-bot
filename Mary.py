@@ -1,6 +1,7 @@
 import discord
 from discord.ext import commands
 import random
+import creds
 
 client = commands.Bot(command_prefix="!", intents=discord.Intents.all())
 
@@ -15,9 +16,15 @@ async def ping(ctx):
 
 @client.command(aliases=["pallaotto", "8ball", "magicball"])
 async def eightball(ctx, *, question):
-    with open("response.txt", "r") as f:
+    with open("src/response.txt", "r") as f:
         random_resp = f.readlines()
         response = random.choice(random_resp)
     await ctx.send(response)
 
-client.run("MTE1NTc2NjkyMTE0MTE3MDE5Nw.GnUj_c.gdiLnWll8oLZpo4yTHF7UQJG19vsqV1DmslY0s")
+@client.command()
+async def mirror(ctx, *, text):
+    user = ctx.author
+    await ctx.send(f"{text} - send by {user}")
+        
+
+client.run(creds.token)
