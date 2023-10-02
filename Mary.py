@@ -16,7 +16,7 @@ async def ping(ctx):
 
 @client.command(aliases=["pallaotto", "8ball", "magicball"])
 async def eightball(ctx, *, question):
-    with open("src/response.txt", "r") as f:
+    with open("response.txt", "r") as f:
         random_resp = f.readlines()
         response = random.choice(random_resp)
     await ctx.send(response)
@@ -25,6 +25,20 @@ async def eightball(ctx, *, question):
 async def mirror(ctx, *, text):
     user = ctx.author
     await ctx.send(f"{text} - sent by {user}")
-        
+
+@client.command()
+async def math(ctx, a: int, op, b: int):
+    if (op == "+"):
+        answer = a + b
+    elif (op == "-"):
+        answer = a - b
+    elif (op == "*"):
+        answer = a * b
+    elif (op == "/"):
+        answer = a / b
+    else:
+        answer = "ERROR: Unknown operation type use +, -, * or / to specify it"
+
+    await ctx.send(answer)
 
 client.run(creds.token)
